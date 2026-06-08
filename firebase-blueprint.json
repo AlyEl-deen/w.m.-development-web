@@ -1,0 +1,77 @@
+{
+  "entities": {
+    "Project": {
+      "title": "Project Definition",
+      "description": "Details about a software project developed by W.M. Development.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "shortDescription": { "type": "string" },
+        "fullDescription": { "type": "string" },
+        "imageUrl": { "type": "string" },
+        "category": { "type": "string", "enum": ["Website", "Mobile App", "System"] },
+        "features": { "type": "array", "items": { "type": "string" } },
+        "techStack": { "type": "array", "items": { "type": "string" } },
+        "priceRange": { "type": "string" }
+      },
+      "required": ["name", "shortDescription", "category"]
+    },
+    "Order": {
+      "title": "Purchase Order",
+      "description": "A submission for a new development project request.",
+      "type": "object",
+      "properties": {
+        "customerName": { "type": "string" },
+        "customerEmail": { "type": "string" },
+        "projectTitle": { "type": "string" },
+        "projectType": { "type": "string" },
+        "details": { "type": "string" },
+        "status": { "type": "string", "enum": ["pending", "processing", "completed"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["customerName", "customerEmail", "projectType", "details"]
+    },
+    "Partner": {
+      "title": "Partner/Sponsor Logo Reservation",
+      "description": "Information about marketing partners or sponsors reserving a space.",
+      "type": "object",
+      "properties": {
+        "companyName": { "type": "string" },
+        "logoUrl": { "type": "string" },
+        "websiteUrl": { "type": "string" },
+        "status": { "type": "string", "enum": ["reserved", "active"] }
+      },
+      "required": ["companyName"]
+    },
+    "ChatMessage": {
+      "title": "Chat Message",
+      "description": "A message in a live support session.",
+      "type": "object",
+      "properties": {
+        "role": { "type": "string", "enum": ["user", "assistant"] },
+        "content": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "sessionId": { "type": "string" }
+      },
+      "required": ["role", "content", "timestamp", "sessionId"]
+    }
+  },
+  "firestore": {
+    "projects": {
+      "schema": "Project",
+      "description": "Showcase of office projects."
+    },
+    "orders": {
+      "schema": "Order",
+      "description": "Inbound development requests."
+    },
+    "partners": {
+      "schema": "Partner",
+      "description": "Reserved spots for sponsors and partners."
+    },
+    "chats": {
+      "schema": "ChatMessage",
+      "description": "Support chat history."
+    }
+  }
+}
