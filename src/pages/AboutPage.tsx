@@ -17,7 +17,7 @@ export function AboutPage() {
           </p>
           <div className="flex gap-12 pt-4">
              <div className="text-center">
-                <p className="text-3xl font-display font-bold text-sky-accent">150+</p>
+                <p className="text-3xl font-display font-bold text-sky-accent">50+</p>
                 <p className="text-[10px] uppercase font-bold text-slate-500 tracking-widest">Deployments</p>
              </div>
              <div className="text-center">
