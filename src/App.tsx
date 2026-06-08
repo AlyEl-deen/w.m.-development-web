@@ -33,6 +33,24 @@ export default function App() {
       }
     };
     testConnection();
+
+    // Handle hash navigation for smooth scrolling
+    const handleHashChange = () => {
+      const hash = window.location.hash;
+      if (hash) {
+        const element = document.querySelector(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    };
+
+    handleHashChange();
+    window.addEventListener('hashchange', handleHashChange);
+
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+    };
   }, []);
 
   return (
@@ -52,7 +70,7 @@ export default function App() {
           </AnimatePresence>
         </main>
 
-        <footer className="py-12 border-t border-white/5 bg-teal-950/50">
+        <footer id="contact" className="py-12 border-t border-white/5 bg-teal-950/50">
           <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
             <div className="space-y-4">
               <h3 className="font-display font-bold text-xl uppercase tracking-tighter">W.M. Development</h3>
@@ -68,18 +86,48 @@ export default function App() {
                   </ul>
                </div>
                <div className="space-y-3">
-                  <p className="text-xs uppercase font-bold text-gold tracking-widest">Connect</p>
+                  <p className="text-xs uppercase font-bold text-gold tracking-widest">Contact</p>
                   <ul className="text-sm text-slate-400 space-y-1">
-                    <li><a href="#" className="hover:text-gold transition-colors">Encryption</a></li>
-                    <li><a href="#" className="hover:text-gold transition-colors">Terminal</a></li>
-                    <li><a href="#" className="hover:text-gold transition-colors">Datacenter</a></li>
+                    <li><a href="mailto:contact@wmd-office.com" className="hover:text-gold transition-colors">contact@wmd-office.com</a></li>
+                    <li><a href="tel:+201234567890" className="hover:text-gold transition-colors">+20 123 456 7890</a></li>
+                    <li><a href="#" className="hover:text-gold transition-colors">Cairo, Egypt</a></li>
                   </ul>
                </div>
             </div>
           </div>
           <div className="max-w-7xl mx-auto px-6 pt-12 text-[10px] uppercase font-bold tracking-widest text-slate-600 flex justify-between">
-             <span>© 2026 W.M. Global Holdings. All protocols reserved.</span>
-             <span>Status: Online [v4.12.0]</span>
+             
+  <div className="container mx-auto px-6 flex flex-col items-center justify-center">
+    
+    <div className="flex flex-col items-center justify-center gap-3 mt-3">
+      <div className="flex h-28 w-28 shrink-0 items-center justify-center drop-shadow-[0_0_22px_rgba(0,168,143,0.5)] sm:h-32 sm:w-32">
+        <img
+          src="/logo.png"
+          alt="W.M.D. office logo"
+          className="h-full w-full object-contain"
+        />
+      </div>
+
+    <div className="text-center">
+      <p className="text-white text-sm md:text-base font-medium tracking-widest">
+        © 2026 <span className="font-bold">Future Coders </span>
+      </p>
+      
+      <p className="text-[#00a88f] text-[10px] mt-2 uppercase tracking-[0.32em] sm:tracking-[0.4em] font-semibold opacity-80">
+        Powered by W.M.D. office
+      </p>
+    </div>
+    </div>
+
+    {/* نقطة نبض صغيرة  الموقع نشط (Live) */}
+    <div className="flex items-center gap-2 mt-2">
+      <span className="relative flex h-2 w-2">
+        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00a88f] opacity-75"></span>
+        <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00a88f]"></span>
+      </span>
+      <span className="text-gray-500 text-[9px] uppercase tracking-tighter">System Active</span>
+    </div>
+  </div>
           </div>
         </footer>
 
