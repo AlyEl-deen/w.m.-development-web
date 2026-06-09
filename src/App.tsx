@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, Link } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { ChatWidget } from './components/ChatWidget';
 import { HomePage } from './pages/HomePage';
@@ -9,6 +9,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { useEffect } from 'react';
 import { doc, getDocFromServer } from 'firebase/firestore';
 import { db } from './lib/firebase';
+import { asset } from './lib/utils';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -54,7 +55,7 @@ export default function App() {
   }, []);
 
   return (
-    <Router>
+    <Router basename={import.meta.env.BASE_URL}>
       <div className="min-h-screen flex flex-col relative">
         <ScrollToTop />
         <Navbar />
@@ -80,9 +81,9 @@ export default function App() {
                <div className="space-y-3">
                   <p className="text-xs uppercase font-bold text-gold tracking-widest">Protocol</p>
                   <ul className="text-sm text-slate-400 space-y-1">
-                    <li><a href="/" className="hover:text-gold transition-colors">Portfolio</a></li>
-                    <li><a href="/about" className="hover:text-gold transition-colors">Introduction</a></li>
-                    <li><a href="/order" className="hover:text-gold transition-colors">Sys-Orders</a></li>
+                    <li><Link to="/" className="hover:text-gold transition-colors">Portfolio</Link></li>
+                    <li><Link to="/about" className="hover:text-gold transition-colors">Introduction</Link></li>
+                    <li><Link to="/order" className="hover:text-gold transition-colors">Sys-Orders</Link></li>
                   </ul>
                </div>
                <div className="space-y-3">
@@ -102,7 +103,7 @@ export default function App() {
     <div className="flex flex-col items-center justify-center gap-3 mt-3">
       <div className="flex h-28 w-28 shrink-0 items-center justify-center drop-shadow-[0_0_22px_rgba(0,168,143,0.5)] sm:h-32 sm:w-32">
         <img
-          src="/logo.png"
+          src={asset('logo.png')}
           alt="W.M.D. office logo"
           className="h-full w-full object-contain"
         />

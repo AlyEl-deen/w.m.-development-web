@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { Menu, X, Terminal, Briefcase, Info, Mail } from 'lucide-react';
 import { useState } from 'react';
+import { asset } from '../lib/utils';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,7 +19,7 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto flex justify-between items-center glass rounded-2xl px-6 py-3 border-white/10">
         <Link to="/" className="flex items-center gap-3 group">
           {/* <div className="w-10 h-10 bg-gradient-to-br "> */}
-            <img src="/logo.png" alt="W.M. logo" className="w-20 h-20 object-contain from-anubis-cyan to-anubis-teal rounded-sm flex items-center justify-center drop-shadow-[0_0_25px_rgba(0,242,254,0.7)] transition-transform group-hover:rotate-45 overflow-hidden" />
+            <img src={asset('logo.png')} alt="W.M. logo" className="w-20 h-20 object-contain from-anubis-cyan to-anubis-teal rounded-sm flex items-center justify-center drop-shadow-[0_0_25px_rgba(0,242,254,0.7)] transition-transform group-hover:rotate-45 overflow-hidden" />
          {/*  </div> */}
           <span className="font-display font-bold text-xl tracking-[0.2em] text-white">W.M. <span className="hidden sm:inline">DEVELOPMENT</span></span>
         </Link>
