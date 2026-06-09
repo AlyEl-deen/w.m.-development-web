@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { db } from '../lib/firebase';
 import { collection, onSnapshot, query, limit } from 'firebase/firestore';
 import { motion } from 'motion/react';
-import { Partner } from '../lib/utils';
+import { Partner, asset } from '../lib/utils';
 import { ShieldCheck } from 'lucide-react';
 
 export function PartnersSection() {
@@ -36,7 +36,7 @@ export function PartnersSection() {
               className="glass p-8 rounded-2xl flex flex-col items-center justify-center gap-4 border-white/5 grayscale hover:grayscale-0 transition-all hover:bg-white/10"
             >
               {partner.logoUrl ? (
-                <img src={partner.logoUrl} alt={partner.companyName} className="h-12 object-contain" />
+                <img src={asset(partner.logoUrl)} alt={partner.companyName} className="h-12 object-contain" />
               ) : (
                 <div className="w-20 h-20 rounded-3xl border border-dashed border-white/10 bg-white/5 flex flex-col items-center justify-center text-slate-400 text-[10px] text-center px-3">
                   <ShieldCheck size={24} className="mb-2 text-sky-400" />

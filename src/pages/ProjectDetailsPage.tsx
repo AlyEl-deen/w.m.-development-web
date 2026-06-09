@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { INITIAL_PROJECTS } from '../constants';
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowLeft, CheckCircle2, ChevronLeft, ChevronRight, ExternalLink, Zap, Target, Box, X, ZoomIn } from 'lucide-react';
-import { cn } from '../lib/utils';
+import { cn, asset } from '../lib/utils';
 
 export function ProjectDetailsPage() {
   const { id } = useParams();
@@ -11,7 +11,7 @@ export function ProjectDetailsPage() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const projectImages = useMemo(
-    () => project ? [project.imageUrl, ...project.galleryImages] : [],
+    () => project ? [project.imageUrl, ...project.galleryImages].map(asset) : [],
     [project]
   );
   const activeImage = projectImages[activeImageIndex] || project?.imageUrl || '';

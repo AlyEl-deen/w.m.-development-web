@@ -4,6 +4,7 @@ import { PartnersSection } from '../components/PartnersSection';
 import { motion } from 'motion/react';
 import { ArrowRight, Code, Smartphone, Rocket, Globe } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { asset } from '../lib/utils';
 
 export function HomePage() {
   return (
@@ -50,7 +51,7 @@ export function HomePage() {
             <div className="absolute inset-0 bg-anubis-cyan/20 rounded-full blur-2xl animate-pulse group-hover:bg-anubis-cyan/40 transition-colors" />
             
             <img 
-              src="/logo.png" 
+              src={asset('logo.png')} 
               alt="W.M. Development Avatar"
               className="w-full h-full object-contain relative z-10 transition-all duration-500 filter drop-shadow(0 0 10px rgba(0, 242, 254, 0.3))"
               onError={(e) => {

@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Project } from '../lib/utils';
+import { Project, asset } from '../lib/utils';
 import { ExternalLink, Code2, Layout, Smartphone } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -23,7 +23,7 @@ export function ProjectCard({ project }: { project: Project }) {
       <Link to={`/project/${project.id}`}>
         <div className="relative h-48 overflow-hidden bg-[radial-gradient(circle_at_center,rgba(0,242,254,0.16),rgba(1,19,19,0.88)_62%)]">
           <img 
-            src={project.imageUrl} 
+            src={asset(project.imageUrl)} 
             alt={project.name} 
             className="w-full h-full object-contain p-8 transition-transform duration-700 group-hover:scale-105 brightness-100 saturate-110 group-hover:brightness-110 group-hover:saturate-125"
           />

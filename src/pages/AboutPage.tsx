@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { Target, Users, Zap, Shield, Globe, Award } from 'lucide-react';
+import { asset } from '../lib/utils';
 
 export function AboutPage() {
   return (
@@ -36,7 +37,7 @@ export function AboutPage() {
           animate={{ scale: 1, opacity: 1 }}
           className="relative aspect-square glass rounded-full overflow-hidden border-white/10"
         ><img 
-              src="/logo.png" 
+              src={asset('logo.png')} 
               alt="W.M. Development Avatar"
               className="w-full h-full object-contain relative z-10 transition-all duration-500 filter drop-shadow(0 0 10px rgba(0, 242, 254, 0.3))"
               onError={(e) => {
