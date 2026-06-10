@@ -37,3 +37,5 @@ export const analyticsPromise = isSupported().then((supported) =>
 );
 
 export default app;
+// Debug: log active project id to help diagnose permission issues
+console.log('[firebase] projectId:', firebaseConfig.projectId);

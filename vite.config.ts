@@ -7,7 +7,9 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, ".", "");
 
   return {
-    base: "/w.m.-development-web/",
+    // Use root base when running on Vercel (deployed at domain root),
+    // otherwise keep the GitHub Pages subpath used during development/gh-pages deploys.
+    base: (process.env.VERCEL === '1' || process.env.VERCEL === 'true') ? '/' : '/w.m.-development-web/',
 
     plugins: [react(), tailwindcss()],
 
