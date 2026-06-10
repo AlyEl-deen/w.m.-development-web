@@ -25,6 +25,14 @@ export function OrderPage() {
     e.preventDefault();
     setLoading(true);
     try {
+      // Prepare payloads: one for logging/simulator (no serverTimestamp),
+      // one for the actual write (uses serverTimestamp).
+      const payloadForLog = {
+        ...formData,
+        status: 'pending'
+      };
+      console.log('Order payload (for rules simulator):', payloadForLog);
+
       const docRef = await addDoc(collection(db, 'orders'), {
         ...formData,
         status: 'pending',
