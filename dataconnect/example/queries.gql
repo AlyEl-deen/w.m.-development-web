@@ -1,0 +1,30 @@
+mutation CreateOrderRequest($clientName: String!, $email: String!, $projectDescription: String!, $status: String!, $budgetEstimate: Float!, $deadline: Date!) @auth(level: USER) {
+  orderRequest_insert(data: {
+    clientName: $clientName,
+    email: $email,
+    projectDescription: $projectDescription,
+    status: $status,
+    budgetEstimate: $budgetEstimate,
+    deadline: $deadline,
+    userId_expr: "auth.uid"
+  })
+}
+
+mutation UpdateProjectStatus($id: UUID!, $status: String!) @auth(level: USER) {
+  orderRequest_update(key: {id: $id}, data: {status: $status})
+}
+
+query ListMyOrderRequests @auth(level: USER) {
+  orderRequests(where: {userId: {eq_expr: "auth.uid"}}) {
+    id
+    clientName
+    projectDescription
+    status
+    budgetEstimate
+    deadline
+  }
+}
+
+mutation DeleteProject($id: UUID!) @auth(level: USER) {
+  orderRequest_delete(key: {id: $id})
+}

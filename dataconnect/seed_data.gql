@@ -1,0 +1,35 @@
+mutation CreateSeedData @transaction {
+  user_insertMany(data: [
+    {
+      id: "550e8400-e29b-41d4-a716-446655440000",
+      name: "Alice",
+      email: "alice@example.com",
+      role: "admin"
+    },
+    {
+      id: "550e8400-e29b-41d4-a716-446655440001",
+      name: "Bob",
+      email: "bob@example.com",
+      role: "member"
+    }
+  ])
+  project_insertMany(data: [
+    {
+      id: "c9c7f1a0-6b6b-4e1b-8e1b-6b6b6b6b6b6b",
+      title: "Website Redesign",
+      description: "Modernizing the corporate website",
+      imageUrl: "https://example.com/project1.jpg",
+      tags: "web,design"
+    }
+  ])
+  orderRequest_insertMany(data: [
+    {
+      clientName: "Acme Corp",
+      email: "contact@acme.com",
+      projectDescription: "Custom API development",
+      status: "pending",
+      budgetEstimate: 5000.0,
+      userId: "550e8400-e29b-41d4-a716-446655440000"
+    }
+  ])
+}

@@ -1,0 +1,36 @@
+type User @table {
+  name: String!
+  email: String!
+  role: String!
+}
+
+type Project @table {
+  title: String!
+  description: String!
+  imageUrl: String!
+  tags: String
+  completionDate: Date
+}
+
+type OrderRequest @table {
+  clientName: String!
+  email: String!
+  projectDescription: String!
+  status: String!
+  budgetEstimate: Float
+  deadline: Date
+  user: User
+}
+
+type ChatSession @table {
+  createdAt: Timestamp!
+  status: String!
+  client: User
+}
+
+type ChatMessage @table {
+  content: String!
+  sender: User!
+  timestamp: Timestamp!
+  chatSession: ChatSession!
+}
