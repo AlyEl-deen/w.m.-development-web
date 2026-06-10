@@ -25,15 +25,30 @@ export function OrderPage() {
     e.preventDefault();
     setLoading(true);
     try {
-      await addDoc(collection(db, 'orders'), {
+      const docRef = await addDoc(collection(db, 'orders'), {
         ...formData,
         status: 'pending',
         createdAt: serverTimestamp()
       });
+      console.log('Order created:', docRef.id);
+      // reset form for next submission
+      setFormData({
+        customerName: '',
+        customerEmail: '',
+        personalEmail: '',
+        personalPhone: '',
+        whatsapp: '',
+        companyName: '',
+        companyEmail: '',
+        companyAddress: '',
+        companyMobile: '',
+        projectType: 'Website',
+        details: ''
+      });
       setSubmitted(true);
     } catch (error) {
-      console.error(error);
-      alert("Submission failed. Please try again.");
+      console.error('Order submission error:', error);
+      alert("Submission failed. Please check the console and try again.");
     } finally {
       setLoading(false);
     }
